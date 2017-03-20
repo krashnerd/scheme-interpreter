@@ -15,7 +15,7 @@
         ((eq? method-name 'lkp)
           (lambda (x) (eval-symbol x contents)))
         ((eq? method-name 'show)
-          (lambda () (display contents)))
+          (lambda () (contents)))
           (else (display "invalid method"))
 
           ))))
