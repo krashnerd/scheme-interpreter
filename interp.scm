@@ -8,13 +8,16 @@
 
 (define (make-environ)
   (let ((contents '()))
-    (lambda(method-name)
+    (lambda (method-name)
       (cond
         ((eq? method-name 'push)
           (lambda (x) (set! contents (cons x contents))))
         ((eq? method-name 'lkp)
           (lambda (x) (eval-symbol x contents)))
+        ((eq? method-name 'show)
+          (lambda () (display contents))
           (else (display "invalid method"))
+
           ))))
 
 (define (eval-if expr env)
@@ -92,5 +95,7 @@
       (newline)
       (interp))))
 
+
 (newline)
+
 ;(interp)
