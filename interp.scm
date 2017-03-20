@@ -35,13 +35,20 @@
 
 (define global-environment
   (list
-    (cons 'pi-sentinel 3.14159265)
+    (cons 'pi-sentinel . 3.14159265)
     ))
 
-(define (eval-define expr env)
-  (display "I'm defining")
-  (cdr expr)
-  )
+(define (eval-define! expr env)
+  (display "I'm defining ")
+  (set! env (cons (cons (cdr expr) . (cdr (cdr expr))) env)))
+
+;  (if (list? (cdr expr))
+;    )
+
+
+
+;  (cdr expr)
+;  )
 
 (define (myeval expr env)
   (display "I'm going to eval: ")
@@ -59,7 +66,7 @@
        ((eq? (car expr) 'quote) (car (cdr expr)))
        ((eq? (car expr) 'if) (eval-if expr env))
        ((eq? (car expr) 'lambda) (eval-lambda expr env))
-       ((eq? (car expr) 'define) (eval-define expr env))
+       ((eq? (car expr) 'define) (eval-define! expr env))
        ))))))
 
 
