@@ -27,7 +27,7 @@
 
 (define (eval-lambda expr env)
   (if (lambda? expr)
-      (list '_________________closure expr env)
+      (list 'closure expr env)
       (invalid "This is an invalid lambda: " expr)
       ))
 
