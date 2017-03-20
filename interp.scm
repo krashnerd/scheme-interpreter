@@ -11,11 +11,11 @@
     (lambda(method-name)
       (cond
         ((eq? method-name 'push)
-          (lambda(x)(set! contents (cons x contents))
+          (lambda(x)(set! contents (cons x contents))))
         ((eq? method-name 'lkp)
           (lambda(x) (eval-symbol x contents)))
           (else (display "invalid method"))
-          ))))))
+          ))))
 
 (define (eval-if expr env)
   (if (if? expr)
