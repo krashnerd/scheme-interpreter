@@ -40,7 +40,7 @@
 
 (define (eval-define! expr env)
   (display "I'm defining ")
-  (set! env (cons (cons (cdr expr) . (cdr (cdr expr))) env)))
+  (set! env (cons (cons (car(cdr expr)) (cdr (cdr expr))) env)))
 
 ;  (if (list? (cdr expr))
 ;    )
