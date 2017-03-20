@@ -2,10 +2,20 @@
   (display string)
   (error expr)
   (newline))
-
 ;(define (eval-let expr env)
 
   ;)
+
+(define (make-environ)
+  (let ((contents '()))
+    (lambda(method-name)
+      (cond
+        ((eq? method-name 'push)
+          (lambda(x)(set! contents (cons x contents))
+        ((eq? method-name 'lkp)
+          (lambda(x) (eval-symbol x contents)))
+          (else (display "invalid method"))
+          ))))))
 
 (define (eval-if expr env)
   (if (if? expr)
@@ -34,13 +44,16 @@
           (eval-symbol symbol (cdr env)))))
 
 (define global-environment
-  (list
-    (cons 'pi-sentinel 3.14159265)
-    ))
+  (make-environ))
+
+
 
 (define (eval-define! expr env)
   (display "I'm defining ")
-  (list (cons (car(cdr expr)) (car(cdr (cdr expr)))) env))
+  (if (list? expr)
+    (expr)
+    ((cons (cons (car(cdr expr)) (car(cdr (cdr expr)))) env))
+  ))
 
 ;  (if (list? (cdr expr))
 ;    )
@@ -80,4 +93,4 @@
       (interp))))
 
 (newline)
-(interp)
+;(interp)
