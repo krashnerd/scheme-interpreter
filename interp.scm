@@ -32,6 +32,7 @@
 
 (define (eval-symbol symbol env)
   ;symbol lookup
+  (display "symbol eval")
   (if (null? env)
       (invalid "Undefined symbol: " symbol)
       (if (eq? (car (car env)) symbol)
@@ -43,8 +44,8 @@
 
 
 
-(define (eval-define! expr env)
-  (display "I'm defining ")
+(define (eval-define expr env)
+  (display "I'm defining")
   (if (list? expr)
     (expr)
     ((env 'push) (cons
@@ -76,8 +77,7 @@
        ((eq? (car expr) 'quote) (car (cdr expr)))
        ((eq? (car expr) 'if) (eval-if expr env))
        ((eq? (car expr) 'lambda) (eval-lambda expr env))
-       ((eq? (car expr) 'define) (eval-define! expr env))
-       ((eq? (car expr) 'exit) (exit))
+       ((eq? (car expr) 'define) (eval-define expr env))
        )))))))
 
 
