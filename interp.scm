@@ -69,7 +69,7 @@
 ;   (null? expr) think about this
    ((boolean? expr) expr)
    ((string? expr) expr)
-   ((symbol? expr) ((env 'lkp) expr)
+   ((symbol? expr) ((env 'lkp) expr))
    ((list? expr)
     (cond
      ((symbol? (car expr))
@@ -78,7 +78,7 @@
        ((eq? (car expr) 'if) (eval-if expr env))
        ((eq? (car expr) 'lambda) (eval-lambda expr env))
        ((eq? (car expr) 'define) (display "is define")(eval-define expr env))
-       )))))))
+       ))))))
 
 
 
