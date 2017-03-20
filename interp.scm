@@ -35,7 +35,7 @@
 
 (define global-environment
   (list
-    (cons 'pi-sentinel . 3.14159265)
+    (cons 'pi-sentinel 3.14159265)
     ))
 
 (define (eval-define! expr env)
