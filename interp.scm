@@ -3,8 +3,9 @@
   (error expr)
   (newline))
 
-(define (eval-let expr env)
-  )
+;(define (eval-let expr env)
+
+  ;)
 
 (define (eval-if expr env)
   (if (if? expr)
@@ -40,7 +41,6 @@
 (define (eval-define expr env)
   (display "I'm defining")
   (cdr expr)
-
   )
 
 (define (myeval expr env)
