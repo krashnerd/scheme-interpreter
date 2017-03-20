@@ -37,13 +37,14 @@
 (define (eval-define symbol expr env)
   (display "I'm defining")
   (display expr)
+  )
 
 (define (myeval expr env)
   (display "I'm going to eval: ")
   (display expr)
   (newline)
   (cond
-;   ((null? expr) think about this
+;   (null? expr) think about this
    ((boolean? expr) expr)
    ((string? expr) expr)
    ((symbol? expr) (eval-symbol expr env))
@@ -55,7 +56,7 @@
        ((eq? (car expr) 'if) (eval-if expr env))
        ((eq? (car expr) 'lambda) (eval-lambda expr env))
        ((eq? (car expr) 'define) (eval-define expr env))
-       )
+       ))))))
 
 
 
