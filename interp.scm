@@ -47,7 +47,9 @@
   (display "I'm defining ")
   (if (list? expr)
     (expr)
-    ((cons (cons (car(cdr expr)) (car(cdr (cdr expr)))) env))
+    ((env 'push) (cons
+      (cons (car(cdr expr))
+      (car(cdr (cdr expr))))))
   ))
 
 ;  (if (list? (cdr expr))
