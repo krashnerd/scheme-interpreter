@@ -17,7 +17,6 @@
         ((eq? method-name 'show)
           (lambda () (contents)))
           (else (display "invalid method"))
-
           ))))
 
 (define (eval-if expr env)
@@ -33,13 +32,6 @@
 
 (define (eval-symbol symbol env)
   ;symbol lookup
-  (if (null? env)
-      (invalid "Undefined symbol: " symbol)
-      (if (eq? (car (car env)) symbol)
-          (cdr (car env))
-          (eval-symbol symbol (cdr env)))))
-
-(define (eval-symbol symbol env)
   (if (null? env)
       (invalid "Undefined symbol: " symbol)
       (if (eq? (car (car env)) symbol)
@@ -74,7 +66,7 @@
 ;   (null? expr) think about this
    ((boolean? expr) expr)
    ((string? expr) expr)
-   ((symbol? expr) (eval-symbol expr env))
+   ((symbol? expr) ((env 'lkp) expr)
    ((list? expr)
     (cond
      ((symbol? (car expr))
@@ -83,6 +75,7 @@
        ((eq? (car expr) 'if) (eval-if expr env))
        ((eq? (car expr) 'lambda) (eval-lambda expr env))
        ((eq? (car expr) 'define) (eval-define! expr env))
+       ((eq? (car expr) 'exit) (exit))
        ))))))
 
 
@@ -97,5 +90,4 @@
 
 
 (newline)
-
-;(interp)
+(interp)
