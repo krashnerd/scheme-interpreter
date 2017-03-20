@@ -77,7 +77,7 @@
        ((eq? (car expr) 'quote) (car (cdr expr)))
        ((eq? (car expr) 'if) (eval-if expr env))
        ((eq? (car expr) 'lambda) (eval-lambda expr env))
-       ((eq? (car expr) 'define) (eval-define expr env))
+       ((eq? (car expr) 'define) (display "is define")(eval-define expr env))
        )))))))
 
 
