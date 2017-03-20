@@ -34,9 +34,10 @@
     (cons 'pi-sentinel 3.14159265)
     ))
 
-(define (eval-define symbol expr env)
+(define (eval-define expr env)
   (display "I'm defining")
   (display expr)
+  (cdr expr)
   )
 
 (define (myeval expr env)
